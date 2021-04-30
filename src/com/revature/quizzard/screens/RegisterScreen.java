@@ -11,6 +11,7 @@ public class RegisterScreen {
     private BufferedReader consoleReader;
 
     public RegisterScreen(BufferedReader consoleReader) {
+        System.out.println("RegisterScreen constructor invoked!");
         this.consoleReader = consoleReader;
     }
 
