@@ -5,66 +5,64 @@ import com.revature.quizzard.models.AppUser;
 
 import java.io.BufferedReader;
 
+// POJO: Plain Old Java Object
+
 public class RegisterScreen {
 
     private UserDAO userDao = new UserDAO(); // ok for now, but actually gross -- fix later
-    private BufferedReader consoleReader;
+    private BufferedReader consoleReader; // may be 'final'?
 
     public RegisterScreen(BufferedReader consoleReader) {
         this.consoleReader = consoleReader;
     }
 
-    public void render() {
-
-        String firstName;
-        String lastName;
-        String email;
+    public void render(){
         String username;
         String password;
+        String email;
+        String firstName;
+        String lastName;
         int age;
 
-        // ok but a little verbose
-//        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-//        BufferedReader consoleReader = new BufferedReader(inputStreamReader);
 
-        try {
-            // risky code that might through an exception
-
+        try{
+            //risky code that might throw an exception
             System.out.println("Register for a new account!");
-            System.out.println("+-------------------------+");
+            System.out.println("+----------------------------------+");
 
-            System.out.print("First name: ");
-            firstName = consoleReader.readLine(); // throws Exception here
+            System.out.println("First name: ");
+            firstName = consoleReader.readLine(); // throws exception here
 
-            System.out.print("Last name: ");
+            System.out.println("Last name: ");
             lastName = consoleReader.readLine();
 
-            System.out.print("Email: ");
+            System.out.println("Email: ");
             email = consoleReader.readLine();
 
-            System.out.print("Username: ");
+            System.out.println("Age: ");
+            //age = consoleReader.readLine(); //doesn't work
+            age = Integer.parseInt(consoleReader.readLine());
+
+            System.out.println("Username: ");
             username = consoleReader.readLine();
 
-            System.out.print("Password: ");
+            System.out.println("Password: ");
             password = consoleReader.readLine();
-
-            System.out.print("Age: ");
-            age = Integer.parseInt(consoleReader.readLine());
 
             AppUser newUser = new AppUser(username, password, email, firstName, lastName, age);
             userDao.saveUserToFile(newUser);
 
-        } catch (NumberFormatException nfe) {
-            // do something about these!
-            System.err.println("You provided an incorrect value for your age! Please try again!");
-            this.render(); // this breaks some stuff! we will need to fix this
-        } catch (Exception e) {
+        } catch (NumberFormatException nfe){
+            //if caught, do something about these!
+            nfe.printStackTrace();//could be problematic if user continually inputs invalid int for "age"
+        } catch (Exception e){
             e.printStackTrace(); // include this line while developing/debugging the app!
-            // should be logged to a file in a production environment
+            // should be logged to a file in a production environment (as opposed to console)
+            //don't use outside of a production environment (use alternative)
         }
-
-
-
     }
 
+    public void verifyInt(){
+
+    }
 }

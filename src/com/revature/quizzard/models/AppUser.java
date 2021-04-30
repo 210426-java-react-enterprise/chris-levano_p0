@@ -1,26 +1,17 @@
 package com.revature.quizzard.models;
 
-/*
-    Classes must be named the exact same as the file itself!
-
-    Class names should (for best practice) be in PascalCase
-        - not to be confused with camelCase
-
-    POJO = Plain Ol' Java Object
-        - Does not (usually) contain any methods beyond simple getters and setters
-            + maybe the occasional convenience method
- */
 public class AppUser {
 
     private String username;
     private String password;
     private String email;
-    private String firstName; // variables should be in camelCase
+    private String firstName;
     private String lastName;
     private int age;
 
+
+
     public AppUser(String username, String password, String email, String firstName, String lastName, int age) {
-        System.out.println("AppUser constructor invoked!");
         this.username = username;
         this.password = password;
         this.email = email;
@@ -29,14 +20,14 @@ public class AppUser {
         this.age = age;
     }
 
-    public String getUsername() {
-        // you do not have to include "this." here because there is no other variable
-        // with the same name in this scope
+    public String getUsername(){
+        // you do not have to include ".this" here because
+        //there is no other variable with the same name in this scope
         return username;
     }
 
-    public void setUsername(String username) {
-        // "this." is required here, otherwise you do not target the correct variable
+    public void setUsername(String username){
+        // ".this" is required here, otherwise you do not target the correct variable
         this.username = username;
     }
 
@@ -84,18 +75,19 @@ public class AppUser {
         return String.format("%s;%s;%s;%s;%s;%d", username, password, email, firstName, lastName, age);
     }
 
-//    @Override
-//    public String toString() {
-//        return "AppUser{" +
-//                "username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", email='" + email + '\'' +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", age=" + age +
-//                '}';
-//    }
+    /*@Override
+    public String toString() {
+        return "AppUser{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
 
+     */
 
     @Override
     public String toString() {
@@ -109,5 +101,4 @@ public class AppUser {
         sb.append('}');
         return sb.toString();
     }
-    
 }
