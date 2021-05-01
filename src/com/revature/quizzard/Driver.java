@@ -5,7 +5,9 @@ import com.revature.quizzard.screens.LoginScreen;
 import com.revature.quizzard.screens.RegisterScreen;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Driver {
 
@@ -14,30 +16,42 @@ public class Driver {
                 "wezley.singleton@revature.com",
                 "Wezley", "Singleton", 30);
 
-//        newUser.toString()
-//        System.out.printf("Hello and welcome, %s! I see that you are %d years old, nice!", newUser.getUsername(), newUser.getAge());
+        File dataFile = new File("resources/users.txt");
 
-        // doesn't work because %d only works with digits
-//        System.out.printf("Test char with digit specifier: %d", 'a');
+        System.out.println("Press 1 to Login");
+        System.out.println("Press 2 to Register");
+        System.out.println("Press 3 to Exit");
 
-        // try () {} == try-with-resources
-        /*try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
-            RegisterScreen registerScreen = new RegisterScreen(consoleReader);
-            registerScreen.render();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-        String name;
-
-        //LoginScreen lScreen = new LoginScreen();
+        //Scanner scan = new Scanner(System.in);//scanner makes situation worse
+        //String inputNum = scan.next();
+        //scan.close();
 
         try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
-            LoginScreen lScreen = new LoginScreen(consoleReader);
+            int inputNum;
+            //inputNum = consoleReader.read();//be careful, it hasn't finished reading the line
 
-            System.out.println(lScreen.CheckForUser("resources/users.txt")); //could make it File f = "resources/users.txt", and place f as parameter
-            //System.out.println(lScreen.CheckForUser("resources/users.txt"));
+            String temp;
+            temp = consoleReader.readLine();//now line is read
+            inputNum = temp.charAt(0);
 
+            //System.out.println("You inputted: " + inputNum);
+
+            switch ((char)inputNum) {
+                case '1':
+                    LoginScreen lScreen = new LoginScreen(consoleReader);
+                    lScreen.CheckForUser(dataFile);
+                    break;
+                case '2':
+                    RegisterScreen rScreen = new RegisterScreen(consoleReader);
+                    rScreen.render();
+                    break;
+                case '3':
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid input.  Exiting...");
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,2 +1,6 @@
 thomas_diendorf;pass1;me@revature.net;thomas;diendorf;32
-wez_sin;pass2;gmpsmg;wez;singleton;20
+wez_sin;pass2;gmpsmg@revature.net;wez;singleton;20
+gecko;pass3;lizard@revature.net;gex;gecko;15
+someguy;pass4;someguy@revature.net;some;guy;25
+thedude;pass5;dude@revature.net;big;lebowski;41
+the_giant;fefifofum;fefifofum@revature.net;the;giant;50
