@@ -16,7 +16,7 @@ public class Driver {
                 "wezley.singleton@revature.com",
                 "Wezley", "Singleton", 30);
 
-        AppUser newUser2 = new AppUser("gexgecko", "p4ssw0rd",
+        AppUser newUser2 = new AppUser("ggecko", "p4ssw0rd",
                 "gex.gecko@revature.com",
                 "Gex", "Gecko", 30);
 
@@ -28,7 +28,7 @@ public class Driver {
                 "some.guy@revature.com",
                 "Some", "Guy", 30);
 
-        LinkedList<AppUser> userList = new LinkedList<AppUser>();
+        LinkedList<AppUser> userList = new LinkedList<>();
         userList.add(newUser);
         userList.add(newUser2);
         userList.add(newUser3);

@@ -101,7 +101,23 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean contains(T data) {
+        if (size == 0) {
+            throw new IllegalArgumentException("This linked list is empty!");
+        }
 
+        Node<T> temp = this.head;
+
+        for (int i = 0; i < size; i++){//will want to stop prior to index value due to "nextNode"
+            if(temp.data.equals(data)){
+                return true;
+            }
+
+            if(i == size-1) {
+                break;
+            }else{
+                temp = temp.nextNode;
+            }
+        }
         return false;
     }
 
