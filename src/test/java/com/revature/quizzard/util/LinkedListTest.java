@@ -1,14 +1,20 @@
 package com.revature.quizzard.util;
 
+<<<<<<< HEAD:src/test/java/com/revature/quizzard/util/LinkedListTest.java
 import sun.awt.image.ImageWatched;
 
 //unit testing is the idea of testing a single unit of code
 //most granular individual piece of code to test is a method
+=======
+import com.revature.quizzard.screens.Screen;
+>>>>>>> 85905ac93f677d192de3fa04dbe7dba20cab23ff:test/com/revature/quizzard/util/LinkedListTest.java
 
 public class LinkedListTest {
 
     //sut => system under test
     private LinkedList<String> sut;
+    private LinkedList<? extends Screen> ex1; // generics with subtyping
+    private LinkedList<?> ex2; // the ? denotes wildcard
 
     public void test_add_withNull() {
 
