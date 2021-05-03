@@ -3,11 +3,11 @@ package com.revature.quizzard;
 import com.revature.quizzard.models.AppUser;
 import com.revature.quizzard.screens.LoginScreen;
 import com.revature.quizzard.screens.RegisterScreen;
+import com.revature.quizzard.util.LinkedList;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Driver {
 
@@ -16,15 +16,30 @@ public class Driver {
                 "wezley.singleton@revature.com",
                 "Wezley", "Singleton", 30);
 
+        AppUser newUser2 = new AppUser("gexgecko", "p4ssw0rd",
+                "gex.gecko@revature.com",
+                "Gex", "Gecko", 30);
+
+        AppUser newUser3 = new AppUser("tdiendorf", "p4ssw0rd",
+                "thomas.diendorf@revature.com",
+                "Thomas", "Diendorf", 30);
+
+        AppUser newUser4 = new AppUser("sguy", "p4ssw0rd",
+                "some.guy@revature.com",
+                "Some", "Guy", 30);
+
+        LinkedList<AppUser> userList = new LinkedList<AppUser>();
+        userList.add(newUser);
+        userList.add(newUser2);
+        userList.add(newUser3);
+        userList.add(newUser4);
+        userList.printLinkedList();
+
         File dataFile = new File("resources/users.txt");
 
-        System.out.println("Press 1 to Login");
+        /*System.out.println("Press 1 to Login");
         System.out.println("Press 2 to Register");
         System.out.println("Press 3 to Exit");
-
-        //Scanner scan = new Scanner(System.in);//scanner makes situation worse
-        //String inputNum = scan.next();
-        //scan.close();
 
         try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
             int inputNum;
@@ -54,7 +69,7 @@ public class Driver {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

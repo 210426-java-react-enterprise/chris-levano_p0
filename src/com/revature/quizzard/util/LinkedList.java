@@ -12,6 +12,11 @@ public class LinkedList<T> implements List<T> {
     private Node<T> head;
     private Node<T> tail;
 
+    /**
+     * Adds a generic element into linked list.  Element cannot be null.
+     *
+     *
+     */
     @Override
     public void add(T data) throws IllegalArgumentException {
 
@@ -71,19 +76,21 @@ public class LinkedList<T> implements List<T> {
             throw new IllegalArgumentException("Index is out of bounds of linked list size!");
         }
 
-        T soughtData = head.data;
+        Node<T> soughtData = this.head;
+        //Node<T> soughtData = new Node<T>(this.head.data);
+        //T soughtData = head.data;
 
         //just in case index == 0
         if(index == 0){
-            return soughtData;
+            return soughtData.data;
         }
 
         //go through loop until i==index, and the final assigned value/type will be the one to return
         for (int i = 0; i < index; i++){//will want to stop prior to index value due to "nextNode"
-            soughtData = head.nextNode.data;
+            soughtData = soughtData.nextNode;
         }
 
-        return soughtData;
+        return soughtData.data;
     }
 
 
@@ -119,6 +126,28 @@ public class LinkedList<T> implements List<T> {
             this.prevNode = prevNode;
         }
 
+    }
+
+    /**
+     * Prints to console all data contained in the linked list.
+     *
+     *
+     */
+    public void printLinkedList(){
+        if (size == 0) {
+            throw new IllegalArgumentException("This linked list is empty!");
+        }
+
+        Node<T> temp = this.head;
+
+        for (int i = 0; i < size; i++){//will want to stop prior to index value due to "nextNode"
+            System.out.println(temp.data);
+            if(i == size-1) {
+                break;
+            }else{
+                temp = temp.nextNode;
+            }
+        }
     }
 
 }
