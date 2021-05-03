@@ -1,19 +1,6 @@
 package com.revature.quizzard.util;
 
 public interface List<T> {
-<<<<<<< HEAD
-    //T is the generic =>
-        //generics is the implementation of parametric polymorphism
-            //class will have a parameterized type
-                // meaning => I do'nt know what type will be in this list, I'll let you know when I create it
-
-    void add(T data);
-    T pop();
-//    T get(T index);
-    boolean contains(T data);
-    int size();
-
-=======
 
     // interfaces do not have constructors!
 
@@ -43,6 +30,5 @@ public interface List<T> {
         System.out.println("This is a default method, it can be overridden!");
     }
 
->>>>>>> 85905ac93f677d192de3fa04dbe7dba20cab23ff
 
 }

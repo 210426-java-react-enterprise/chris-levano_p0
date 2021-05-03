@@ -2,9 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<<<<<<< HEAD
-=======
-
     <!--
         XML = eXtensible Markup Language
 
@@ -24,7 +21,6 @@
 
     -->
 
->>>>>>> 85905ac93f677d192de3fa04dbe7dba20cab23ff
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.revature</groupId>
@@ -44,12 +40,5 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-
     </dependencies>
-
-=======
-    </dependencies>
-    
->>>>>>> 85905ac93f677d192de3fa04dbe7dba20cab23ff
 </project>
