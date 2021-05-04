@@ -11,13 +11,15 @@ package com.revature.quizzard.models;
             + maybe the occasional convenience method
  */
 public class AppUser {
-
+    private int id;
     private String username;
     private String password;
     private String email;
     private String firstName; // variables should be in camelCase
     private String lastName;
     private int age;
+
+    public AppUser() {}
 
     public AppUser(String username, String password, String email, String firstName, String lastName, int age) {
         System.out.println("AppUser constructor invoked!");
@@ -38,6 +40,13 @@ public class AppUser {
     public void setUsername(String username) {
         // "this." is required here, otherwise you do not target the correct variable
         this.username = username;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPassword() {

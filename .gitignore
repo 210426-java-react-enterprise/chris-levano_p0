@@ -28,3 +28,6 @@ hs_err_pid*
 
 # Build files/folders (Maven)
 target/
+
+# Sensitive information
+*.properties
