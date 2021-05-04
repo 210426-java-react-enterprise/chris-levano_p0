@@ -70,6 +70,7 @@ public class LinkedList<T> implements List<T> {
             }
             runner = runner.nextNode;
         }
+
         return null;
     }
 

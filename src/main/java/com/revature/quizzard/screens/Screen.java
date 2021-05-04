@@ -35,6 +35,22 @@ public abstract class Screen {
         this.route = route;
     }
 
+    protected String name;
+    protected String route;
+
+    public Screen(String name, String route) {
+        this.name = name;
+        this.route = route;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRoute() {
+        return route;
+    }
+
     public abstract void render();
 
 }

@@ -14,6 +14,7 @@ public class LoginScreen extends Screen {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
     }
+
     public void render() {
 
         try {
