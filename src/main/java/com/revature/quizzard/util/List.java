@@ -2,6 +2,8 @@ package com.revature.quizzard.util;
 
 public interface List<T> {
 
+    //lots of implicit key words inside interface
+
     // interfaces do not have constructors!
 
     // all fields declared within interfaces are implicitly
@@ -9,6 +11,7 @@ public interface List<T> {
 
     // all method stubs declared within interfaces are implicitly
     // public and abstract
+        // they are implicit because if they weren't public how would you access them
     void add(T data);
     T pop();
     T get(int index);
@@ -30,5 +33,6 @@ public interface List<T> {
         System.out.println("This is a default method, it can be overridden!");
     }
 
+    //Int
 
 }

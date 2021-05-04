@@ -7,7 +7,7 @@ package com.revature.quizzard.util;
  * @param <T>
  */
 public class LinkedList<T> implements List<T> {
-
+    //interface declarations are implicitly abstract
     private int size;
     private Node<T> head;
     private Node<T> tail;
@@ -27,9 +27,7 @@ public class LinkedList<T> implements List<T> {
             newNode.prevNode = tail;
             tail = newNode;
         }
-
         size++;
-
     }
 
     /**
@@ -56,11 +54,12 @@ public class LinkedList<T> implements List<T> {
         size--;
 
         return soughtData;
-
     }
 
     @Override
     public T get(int index) {
+
+
         return null;
     }
 
@@ -74,6 +73,10 @@ public class LinkedList<T> implements List<T> {
         return size;
     }
 
+    //Nested class
+    //Made static because we don't need access to instance members
+    //to access instance members or non static methods
+    //  => woul dhave to noe be static
     private static class Node<T> {
 
         T data;

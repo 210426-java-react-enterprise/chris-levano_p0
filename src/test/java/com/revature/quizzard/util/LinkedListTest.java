@@ -5,7 +5,13 @@ import org.junit.*;
 public class LinkedListTest {
 
     private LinkedList<String> sut;
+    //This example is showing what we will do with the screen
+        //the wildcard will allow
+    private LinkedList<? extends Object> ex1; // generics with subtyping
+    private LinkedList<?> ex2;
 
+    //does this before and after eacch test to ensure data is new each time
+    //unit test tests smallest => method.  If its bigger than that its an integration test.
     @Before
     public void setUpTest() {
         sut = new LinkedList<>();
