@@ -22,6 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# IDE-specific files
+# IDE-specific files/folders
 .idea/
 *.iml
+
+# Build files/folders (Maven)
+target/
