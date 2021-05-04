@@ -24,9 +24,11 @@ public class RegisterScreen extends Screen {
         String password;
         int age;
 
+        /*
         // ok but a little verbose
-//        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-//        BufferedReader consoleReader = new BufferedReader(inputStreamReader);
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader consoleReader = new BufferedReader(inputStreamReader);
+         */
 
         try {
             // risky code that might through an exception
@@ -63,9 +65,5 @@ public class RegisterScreen extends Screen {
             e.printStackTrace(); // include this line while developing/debugging the app!
             // should be logged to a file in a production environment
         }
-
-
-
     }
-
 }

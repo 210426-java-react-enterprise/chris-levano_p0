@@ -31,3 +31,4 @@ target/
 
 # Sensitive information
 *.properties
+users.txt
