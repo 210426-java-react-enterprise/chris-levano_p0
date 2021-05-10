@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 
 public class RegisterScreen extends Screen {
 
-    private UserDAO userDao = new UserDAO(); // ok for now, but actually gross -- fix later
+    private UserDAO userDao = new UserDAO();
     private BufferedReader consoleReader;
 
     public RegisterScreen(BufferedReader consoleReader) {
@@ -23,10 +23,6 @@ public class RegisterScreen extends Screen {
         String username;
         String password;
         int age;
-
-        // ok but a little verbose
-//        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-//        BufferedReader consoleReader = new BufferedReader(inputStreamReader);
 
         try {
 
@@ -55,12 +51,10 @@ public class RegisterScreen extends Screen {
             userDao.save(newUser);
 
         } catch (NumberFormatException nfe) {
-            // do something about these!
             System.err.println("You provided an incorrect value for your age! Please try again!");
-            this.render(); // this breaks some stuff! we will need to fix this
+            this.render();
         } catch (Exception e) {
-            e.printStackTrace(); // include this line while developing/debugging the app!
-            // should be logged to a file in a production environment
+            e.printStackTrace();
         }
 
 

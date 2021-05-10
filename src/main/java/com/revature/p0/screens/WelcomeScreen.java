@@ -39,8 +39,6 @@ public class WelcomeScreen extends Screen {
                     break;
                 case "3":
                     System.out.println("Exiting application!");
-                    // we need to figure out how to tell the app the shutdown
-//                    System.exit(0); // very bad practice; force closes the JVM
                     app().setAppRunning(false);
                     break;
                 default:

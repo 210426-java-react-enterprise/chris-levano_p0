@@ -44,13 +44,10 @@ public class AppUser {
     }
 
     public String getUsername() {
-        // you do not have to include "this." here because there is no other variable
-        // with the same name in this scope
         return username;
     }
 
     public void setUsername(String username) {
-        // "this." is required here, otherwise you do not target the correct variable
         this.username = username;
     }
 
@@ -97,7 +94,6 @@ public class AppUser {
     public String toFileString() {
         return String.format("%s;%s;%s;%s;%s;%d", username, password, email, firstName, lastName, age);
     }
-
 
     @Override
     public String toString() {
