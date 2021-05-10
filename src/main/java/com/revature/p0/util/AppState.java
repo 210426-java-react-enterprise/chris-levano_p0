@@ -1,9 +1,7 @@
-package com.revature.quizzard.util;
+package com.revature.p0.util;
 
-import com.revature.quizzard.daos.UserDAO;
-import com.revature.quizzard.screens.LoginScreen;
-import com.revature.quizzard.screens.RegisterScreen;
-import com.revature.quizzard.screens.WelcomeScreen;
+import com.revature.p0.daos.UserDAO;
+import com.revature.p0.screens.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,8 +22,13 @@ public class AppState {
 
         router = new ScreenRouter();
         router.addScreen(new WelcomeScreen(consoleReader, router))
-              .addScreen(new LoginScreen(consoleReader))
-              .addScreen(new RegisterScreen(consoleReader));
+              .addScreen(new LoginScreen(consoleReader, router))
+              .addScreen(new RegisterScreen(consoleReader))
+              .addScreen(new DashboardScreen(consoleReader, router))
+                .addScreen(new BalanceScreen(consoleReader, router))
+        .addScreen(new DepositScreen(consoleReader, router))
+                .addScreen(new WithdrawalScreen(consoleReader, router));
+
 
         System.out.println("Application initialized!");
     }

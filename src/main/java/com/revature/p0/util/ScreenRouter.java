@@ -1,6 +1,6 @@
-package com.revature.quizzard.util;
+package com.revature.p0.util;
 
-import com.revature.quizzard.screens.Screen;
+import com.revature.p0.screens.Screen;
 
 public class ScreenRouter {
 

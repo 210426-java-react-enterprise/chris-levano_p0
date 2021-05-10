@@ -1,7 +1,8 @@
-package com.revature.quizzard.screens;
+package com.revature.p0.screens;
 
-import com.revature.quizzard.daos.UserDAO;
-import com.revature.quizzard.models.AppUser;
+import com.revature.p0.daos.UserDAO;
+import com.revature.p0.models.AppUser;
+import com.revature.p0.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
@@ -9,10 +10,12 @@ public class LoginScreen extends Screen {
 
     private UserDAO userDao = new UserDAO();
     private BufferedReader consoleReader;
+    private ScreenRouter router;
 
-    public LoginScreen(BufferedReader consoleReader) {
+    public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
+        this.router = router;
     }
 
     public void render() {
@@ -34,11 +37,14 @@ public class LoginScreen extends Screen {
                 AppUser authenticatedUser = userDao.findUserByUsernameAndPassword(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login successful!");
+                    router.navigate("/dashboard");
                 } else {
-                    System.out.println("Login failed!");
+                    System.out.println("Login failed! Please try again!");
+                    router.navigate("/login");
                 }
             } else {
-                System.out.println("It looks like you didn't provide any credentials!");
+                System.out.println("It looks like you didn't provide any credentials! Please try again!");
+                router.navigate("/login");
             }
 
         } catch (Exception e) {

@@ -1,7 +1,7 @@
-package com.revature.quizzard.screens;
+package com.revature.p0.screens;
 
-import com.revature.quizzard.daos.UserDAO;
-import com.revature.quizzard.models.AppUser;
+import com.revature.p0.daos.UserDAO;
+import com.revature.p0.models.AppUser;
 
 import java.io.BufferedReader;
 
@@ -29,7 +29,6 @@ public class RegisterScreen extends Screen {
 //        BufferedReader consoleReader = new BufferedReader(inputStreamReader);
 
         try {
-            // risky code that might through an exception
 
             System.out.println("Register for a new account!");
             System.out.println("+-------------------------+");

@@ -1,4 +1,4 @@
-package com.revature.quizzard.models;
+package com.revature.p0.models;
 
 /*
     Classes must be named the exact same as the file itself!
@@ -12,11 +12,11 @@ package com.revature.quizzard.models;
  */
 public class AppUser {
 
-    private int id;
+    private static int id;
     private String username;
     private String password;
     private String email;
-    private String firstName; // variables should be in camelCase
+    private String firstName;
     private String lastName;
     private int age;
 
@@ -34,12 +34,13 @@ public class AppUser {
         this.age = age;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public int setId(int id) {
         this.id = id;
+        return id;
     }
 
     public String getUsername() {
@@ -96,18 +97,6 @@ public class AppUser {
     public String toFileString() {
         return String.format("%s;%s;%s;%s;%s;%d", username, password, email, firstName, lastName, age);
     }
-
-//    @Override
-//    public String toString() {
-//        return "AppUser{" +
-//                "username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", email='" + email + '\'' +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", age=" + age +
-//                '}';
-//    }
 
 
     @Override

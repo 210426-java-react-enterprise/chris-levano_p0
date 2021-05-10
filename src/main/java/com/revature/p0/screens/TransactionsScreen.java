@@ -1,28 +1,24 @@
-package com.revature.quizzard.screens;
+package com.revature.p0.screens;
 
-import com.revature.quizzard.util.ScreenRouter;
-import static com.revature.quizzard.Driver.app;
 
+import com.revature.p0.util.ScreenRouter;
 import java.io.BufferedReader;
 
-public class WelcomeScreen extends Screen {
+import static com.revature.p0.Driver.app;
 
+public class TransactionsScreen extends Screen{
     private BufferedReader consoleReader;
     private ScreenRouter router;
 
-    public WelcomeScreen(BufferedReader consoleReader, ScreenRouter router) {
-        super("WelcomeScreen", "/welcome");
+    public TransactionsScreen(BufferedReader consoleReader, ScreenRouter router) {
+        super("TransactionsScreen", "/transactions");
         this.consoleReader = consoleReader;
         this.router = router;
     }
-
     @Override
     public void render() {
 
-        System.out.println("Welcome to Quizzard!");
-        System.out.println("1) Login");
-        System.out.println("2) Register");
-        System.out.println("3) Exit application");
+        System.out.println("Transactions in the past 90 days: ");
 
         try {
             System.out.print("> ");
@@ -30,14 +26,10 @@ public class WelcomeScreen extends Screen {
 
             switch (userSelection) {
                 case "1":
-                    System.out.println("Navigating to login screen");
-                    router.navigate("/login");
+                    System.out.println("Navigating to dashboard");
+                    router.navigate("/dashboard");
                     break;
                 case "2":
-                    System.out.println("Navigating to register screen");
-                    router.navigate("/register");
-                    break;
-                case "3":
                     System.out.println("Exiting application!");
                     // we need to figure out how to tell the app the shutdown
 //                    System.exit(0); // very bad practice; force closes the JVM
@@ -53,3 +45,6 @@ public class WelcomeScreen extends Screen {
 
     }
 }
+
+
+
