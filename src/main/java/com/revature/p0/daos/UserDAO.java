@@ -70,7 +70,7 @@ public class UserDAO {
     public boolean isEmailAvailable(String email) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "select * from quizzard.users where email = ?";
+            String sql = "select * from public.users where email = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
 
