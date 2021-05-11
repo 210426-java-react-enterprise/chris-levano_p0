@@ -19,7 +19,7 @@ public class BalanceScreen extends Screen {
     @Override
     public void render() {
         System.out.println("Your balance is: ");
-        AccountsDAO.fetchBalance(AppUser.getId());
+        System.out.println("$" + AccountsDAO.fetchBalance(AppUser.getId()));
         System.out.println("1) Back to dashboard?");
         System.out.println("2) Exit application");
 

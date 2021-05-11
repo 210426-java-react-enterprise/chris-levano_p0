@@ -37,7 +37,7 @@ public class DashboardScreen extends Screen{
                     break;
                 case "2":
                     System.out.println("Navigating to transaction history");
-                    router.navigate("/transactions");
+                    router.navigate("/trans");
                     break;
                 case "3":
                     System.out.println("Navigating to withdrawal window");
@@ -49,8 +49,6 @@ public class DashboardScreen extends Screen{
                     break;
                 case "5":
                     System.out.println("Exiting application!");
-                    // we need to figure out how to tell the app the shutdown
-//                    System.exit(0); // very bad practice; force closes the JVM
                     app().setAppRunning(false);
                     break;
                 default:

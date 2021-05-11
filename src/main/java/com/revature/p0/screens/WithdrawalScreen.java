@@ -2,8 +2,8 @@ package com.revature.p0.screens;
 
 import com.revature.p0.daos.AccountsDAO;
 import com.revature.p0.models.AppUser;
+import com.revature.p0.services.AccountService;
 import com.revature.p0.util.ScreenRouter;
-
 import java.io.BufferedReader;
 
 public class WithdrawalScreen extends Screen{
@@ -15,16 +15,15 @@ public class WithdrawalScreen extends Screen{
         this.consoleReader = consoleReader;
         this.router = router;
     }
-    @Override
     public void render() {
 
 
         System.out.println("How much would you like to withdraw? : ");
 
         try {
-            System.out.print("> ");
+            System.out.print("$");
             double withdraw_am = Double.parseDouble(consoleReader.readLine());
-            AccountsDAO.withdraw(AppUser.getId(), withdraw_am);
+            AccountService.withdrawVerify(withdraw_am);
             System.out.println("Navigating to dashboard");
             router.navigate("/dashboard");
 

@@ -1,8 +1,6 @@
 package com.revature.p0.screens;
 
-
-import com.revature.p0.daos.AccountsDAO;
-import com.revature.p0.models.AppUser;
+import com.revature.p0.services.AccountService;
 import com.revature.p0.util.ScreenRouter;
 import java.io.BufferedReader;
 
@@ -15,15 +13,14 @@ public class DepositScreen extends Screen{
         this.consoleReader = consoleReader;
         this.router = router;
     }
-    @Override
     public void render() {
 
         System.out.println("How much would you like to deposit? : ");
 
         try {
-            System.out.print("> ");
+            System.out.print("$");
             double deposit_am = Double.parseDouble(consoleReader.readLine());
-            AccountsDAO.deposit(AppUser.getId(), deposit_am);
+            AccountService.depositVerify(deposit_am);
             System.out.println("Navigating to dashboard");
             router.navigate("/dashboard");
 
