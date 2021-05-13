@@ -6,17 +6,32 @@ import java.io.BufferedReader;
 
 import static com.revature.p0.Driver.app;
 
+/**
+ * Displays a variety of options available to the user, either bringing them to a separate screen or exiting the app.
+ * Choice read in by BufferedReader
+ */
 public class DashboardScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
 
+    /**
+     * Establishes the name and route for the router as well as invoking router so the user can navigate to other screens
+     * from this one
+     * @param consoleReader
+     * @param router
+     */
     public DashboardScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("DashboardScreen", "/dashboard");
         this.consoleReader = consoleReader;
         this.router = router;
     }
 
+    /**
+     * Invocation of the render method from Screen that is extended. Lets the user choose
+     * what to do from here, either view balance or transactions, make deposit or withdrawal
+     * or terminate the app
+     */
     public void render() {
 
         System.out.println("Welcome to your account!");
@@ -52,11 +67,11 @@ public class DashboardScreen extends Screen{
                     app().setAppRunning(false);
                     break;
                 default:
-                    System.out.println("Invalid selection!");
+                    System.out.println("Invalid selection! Please try again!");
             }
 
         } catch (Exception e){
-            e.printStackTrace();
+            System.out.println("Something went wrong! Please try again!");
         }
 
 

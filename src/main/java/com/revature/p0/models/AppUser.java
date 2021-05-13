@@ -1,14 +1,7 @@
 package com.revature.p0.models;
 
-/*
-    Classes must be named the exact same as the file itself!
-
-    Class names should (for best practice) be in PascalCase
-        - not to be confused with camelCase
-
-    POJO = Plain Ol' Java Object
-        - Does not (usually) contain any methods beyond simple getters and setters
-            + maybe the occasional convenience method
+/**
+ * Builds the AppUser object using basic getters and setters
  */
 public class AppUser {
 
@@ -24,8 +17,18 @@ public class AppUser {
         super();
     }
 
+    /**
+     * Assembles the present values of the params to assemble an AppUser object to be more easily passed around
+     * Values for the params will be harvested at registration.
+     * @param username
+     * @param password
+     * @param email
+     * @param firstName
+     * @param lastName
+     * @param age
+     */
     public AppUser(String username, String password, String email, String firstName, String lastName, int age) {
-        System.out.println("AppUser constructor invoked!");
+        System.out.println("Registering user...");
         this.username = username;
         this.password = password;
         this.email = email;
@@ -90,22 +93,4 @@ public class AppUser {
     public void setAge(int age) {
         this.age = age;
     }
-
-    public String toFileString() {
-        return String.format("%s;%s;%s;%s;%s;%d", username, password, email, firstName, lastName, age);
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("AppUser{");
-        sb.append("username='").append(username).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", age=").append(age);
-        sb.append('}');
-        return sb.toString();
-    }
-    
 }

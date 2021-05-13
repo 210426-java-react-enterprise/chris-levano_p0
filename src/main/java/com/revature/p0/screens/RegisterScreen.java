@@ -5,16 +5,27 @@ import com.revature.p0.models.AppUser;
 
 import java.io.BufferedReader;
 
+/**
+ * Gives the user prompts to create an account, getting all of their information
+ */
 public class RegisterScreen extends Screen {
 
     private UserDAO userDao = new UserDAO();
     private BufferedReader consoleReader;
 
+    /**
+     * Establishes the name and route for the router, does not need to take in the router because once completed it
+     * falls immediately into the next screen
+     * @param consoleReader
+     */
     public RegisterScreen(BufferedReader consoleReader) {
         super("RegisterScreen", "/register");
         this.consoleReader = consoleReader;
     }
-
+    /**
+     * Invocation of the render method from Screen that is extended. Prompts the user for info for constructing an AppUser object
+     * and stores the info for feeding into AppUser and later the database
+     */
     public void render() {
 
         String firstName;
@@ -54,7 +65,7 @@ public class RegisterScreen extends Screen {
             System.err.println("You provided an incorrect value for your age! Please try again!");
             this.render();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong! Please try again!");
         }
 
 

@@ -8,8 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 
+/**
+ * Handles all database calls to the Accounts table, including getting the account number for the current user,
+ * getting their balance, committing deposits and withdrawals, writing to the transaction table after
+ * a deposit or withdrawal, and printing the transaction history
+ */
 public class AccountsDAO {
     private static DecimalFormat df2 = new DecimalFormat("#.##");
+
+    /**
+     * Fetchs the balance of the current user from the Accounts table
+     * @param id
+     * @return user balance as a double
+     */
     public static Double fetchBalance(int id) {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -19,7 +30,6 @@ public class AccountsDAO {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                int account_num = rs.getInt(1);
                 double balance = rs.getDouble(2);
                 return balance;
             }
@@ -28,6 +38,11 @@ public class AccountsDAO {
         }
         return null;
     }
+    /**
+     * Fetchs the account number of the current user from the Accounts table for use in transaction fetching
+     * @param id
+     * @return account number as an int
+     */
     public static int fetchAccountNum(int id){
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
@@ -44,6 +59,12 @@ public class AccountsDAO {
         }
         return Integer.parseInt(null);
     }
+
+    /**
+     * Commits any deposit to the DB, increasing user balance accordingly and writing a record to the transaction table
+     * @param id
+     * @param deposit_am
+     */
     public static void deposit(int id, double deposit_am) {
         if (deposit_am < 0){
             System.out.println("You can not deposit a negative amount! Please try again!");
@@ -80,15 +101,14 @@ public class AccountsDAO {
             e.printStackTrace();
         }
     }
+    /**
+     * Commits any withdrawal to the DB, decreasing user balance accordingly and writing a record to the transaction table
+     * @param id
+     * @param withdraw_am
+     */
     public static void withdraw(int id, double withdraw_am) {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-
-            double balance = AccountsDAO.fetchBalance(id);
-            if (withdraw_am < 0 || withdraw_am > balance){
-                System.out.println("You can not withdraw a negative amount or withdraw more than your account balance! Please try again!");
-                return;
-            }
             String sql = "update accounts set balance = balance - ? where id = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(1, withdraw_am);
@@ -100,7 +120,7 @@ public class AccountsDAO {
                     System.out.println(rs.getDouble("balance"));
                 }
             }
-            balance = AccountsDAO.fetchBalance(id);
+            double balance = AccountsDAO.fetchBalance(id);
             System.out.println("New balance is: \n" + balance);
             int account_num = AccountsDAO.fetchAccountNum(id);
             String trans_insert = "INSERT INTO public.transactions (account_num, change, prev_bal)" + "VALUES (?,?,?)";
@@ -119,6 +139,11 @@ public class AccountsDAO {
             e.printStackTrace();
         }
     }
+    /**
+     * Queries the transactions table for the history of the present user and prints it into a graph along
+     * with giving the balance after the change and what kind of transaction it was.
+     * @param id
+     */
     public static void fetchTransactions(int id){
         try (Connection conn = ConnectionFactory.getInstance().getConnection()){
             int account_num = AccountsDAO.fetchAccountNum(id);

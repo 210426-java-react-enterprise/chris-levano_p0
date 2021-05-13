@@ -2,6 +2,8 @@ package com.revature.p0.util;
 
 import org.junit.*;
 
+import static org.junit.Assert.assertTrue;
+
 public class LinkedListTest {
 
     private LinkedList<String> sut;
@@ -70,28 +72,139 @@ public class LinkedListTest {
         Assert.assertEquals(expectedSize, actualSize);
     }
 
-    // TODO: (Associate task) implement this method!
     @Test
     public void test_peekWithEmptyList() {
+        // Arrange
+        // nothing to do here...
 
+        // Act
+        String actualResult = sut.peek();
+
+        // Assert
+        Assert.assertNull(actualResult);
     }
 
-    // TODO: (Associate task) implement this method!
     @Test
     public void test_peekWithPopulatedList() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
+        String expectedResult = "test data 1";
+        int expectedSize = 2;
 
+        // Act
+        String actualResult = sut.peek();
+
+        // Assert
+        int actualSize = sut.size();
+        Assert.assertEquals(expectedResult, actualResult);
+        Assert.assertEquals(expectedSize, actualSize);
     }
 
-    // TODO: (Associate task) implement this method!
+    @Test
+    public void test_getWithPopulatedList() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
+        String expectedResult = "test data 2";
+
+        // Act
+        String actualResult = sut.get(1);
+
+        // Assert
+        int actualSize = sut.size();
+        Assert.assertEquals(expectedResult, actualResult);
+    }
+
+
+    @Test
+    public void test_getWithUnpopulatedList() {
+        //Arrange
+        String expectedResult = null;
+
+        // Act
+        String actualResult = sut.get(0);
+
+        // Assert
+        Assert.assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void test_getWithOutOfBoundsIndex() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
+
+        try {
+            sut.get(4);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e instanceof IllegalArgumentException);
+        }
+    }
+
+    @Test
+    public void test_removeWithEmptyList() {
+        //Arrange
+
+        try {
+            sut.remove("test");
+        } catch (IllegalArgumentException e) {
+            assertTrue(e instanceof IllegalArgumentException);
+        }
+    }
+
+    @Test
+    public void test_removeWithPopulatedList() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
+        int expectedSize = 1;
+        // Act
+        sut.remove("test data 2");
+        boolean actualResult = sut.contains("test data 2");
+        int actualSize = sut.size();
+        // Assert
+        Assert.assertEquals(false, actualResult);
+        Assert.assertEquals(expectedSize, actualSize);
+    }
+
     @Test
     public void test_containsWithEmptyList() {
+        // Arrange
+        // nothing to do here...
 
+        // Act
+        boolean actualResult = sut.contains("");
+
+        // Assert
+        Assert.assertFalse(actualResult);
     }
 
-    // TODO: (Associate task) implement this method!
     @Test
     public void test_containsWithPopulatedList() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
 
+        // Act
+        boolean actualResult = sut.contains("test data 2");
+
+        // Assert
+        Assert.assertEquals(true, actualResult);
+    }
+
+    @Test
+    public void test_containsWithPopulatedListButNoValue() {
+        //Arrange
+        sut.add("test data 1");
+        sut.add("test data 2");
+        boolean expectedResult = true;
+
+        // Act
+        boolean actualResult = sut.contains("test data 3");
+
+        // Assert
+        Assert.assertEquals(false, actualResult);
     }
 
 

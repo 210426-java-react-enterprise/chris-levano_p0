@@ -8,20 +8,28 @@ import java.io.BufferedReader;
 import static com.revature.p0.Driver.app;
 
 /**
- *  Will invoke the fetchBalance method for the current user, printing all their recorded transactions.
- *  Also gives the option to return to dash board or quit the app.
- *
- *@return
+ * Displays the current users transaction history and gives the option to quit the app or return to dashboard using the bufferedReader
+ * This screen is accessible through the dashboard
  */
 public class TransactionsScreen extends Screen{
     private BufferedReader consoleReader;
     private ScreenRouter router;
 
+    /**
+     * Establishes the name and route for the router as well as invoking router so the user can navigate to other screens
+     * from this one
+     * @param consoleReader
+     * @param router
+     */
     public TransactionsScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("TransactionsScreen", "/trans");
         this.consoleReader = consoleReader;
         this.router = router;
     }
+    /**
+     * Invocation of the render method from Screen that is extended. Lets the user choose
+     * what to do after seeing their transactions
+     */
     public void render() {
 
         System.out.println("Transactions: ");
@@ -43,11 +51,11 @@ public class TransactionsScreen extends Screen{
                     app().setAppRunning(false);
                     break;
                 default:
-                    System.out.println("Invalid selection!");
+                    System.out.println("Invalid selection! Please try again!");
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong! Please try again!");
         }
 
     }

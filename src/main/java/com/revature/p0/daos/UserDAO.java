@@ -8,8 +8,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Handles calls to the users table for user creation, and look up.
+ */
 public class UserDAO {
 
+    /**
+     * Inserts the new users records into the users table upon registration
+     * @param newUser
+     */
     public void save(AppUser newUser) {
 
         String username = newUser.getUsername();
@@ -47,6 +54,12 @@ public class UserDAO {
         }
     }
 
+    /**
+     * Checks if a given username is already in use in the users table, be used after an attempted registration
+     * @param username
+     * @return boolean, true if the username is unique and allows registration to proceed or false,
+     * upon which the user will be told to try another username
+     */
     public boolean isUsernameAvailable(String username) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
@@ -66,7 +79,12 @@ public class UserDAO {
         return true;
 
     }
-
+    /**
+     * Checks if a given email is already in use in the users table, be used after an attempted registration
+     * @param email
+     * @return boolean, true if the email is unique and allows registration to proceed or false,
+     * upon which the user will be told they are already registered
+     */
     public boolean isEmailAvailable(String email) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
@@ -85,6 +103,14 @@ public class UserDAO {
 
         return true;
     }
+
+    /**
+     * Queries the DB to see if a given username, password pair are associated in the same entry in the users table
+     * if so it will log that information in the the AppUser object 'user'
+     * @param username
+     * @param password
+     * @return the AppUser object 'user' to be used throughout the rest of the program
+     */
     public AppUser findUserByUsernameAndPassword(String username, String password) {
 
         AppUser user = null;

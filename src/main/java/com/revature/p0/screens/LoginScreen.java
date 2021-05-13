@@ -6,18 +6,32 @@ import com.revature.p0.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
+/**
+ * Prompts the user for login credentials, reading it in with BufferedReader
+ * after they are given they will proceed to the dashboard
+ */
 public class LoginScreen extends Screen {
 
     private UserDAO userDao = new UserDAO();
     private BufferedReader consoleReader;
     private ScreenRouter router;
 
+    /**
+     * Establishes the name and route for the router as well as invoking router so the system can navigate go to
+     * the dashboard from this one
+     * @param consoleReader
+     * @param router
+     */
     public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
         this.router = router;
     }
 
+    /**
+     * Invocation of the render method from Screen that is extended. Prompts the user for their login details and handles
+     * any errors made by the user by reseting itself
+     */
     public void render() {
 
         try {
@@ -48,7 +62,7 @@ public class LoginScreen extends Screen {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong! Please try again!");
         }
     }
 }

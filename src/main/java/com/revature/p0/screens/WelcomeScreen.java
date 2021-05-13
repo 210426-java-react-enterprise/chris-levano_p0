@@ -5,17 +5,30 @@ import static com.revature.p0.Driver.app;
 
 import java.io.BufferedReader;
 
+/**
+ * Displays a variety of options available to the user, either bringing them to a separate screen or exiting the app.
+ * Choice read in by BufferedReader
+ */
 public class WelcomeScreen extends Screen {
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
 
+    /**
+     * Establishes the name and route for the router as well as invoking router so the user can navigate to other screens
+     * from this one
+     * @param consoleReader
+     * @param router
+     */
     public WelcomeScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("WelcomeScreen", "/welcome");
         this.consoleReader = consoleReader;
         this.router = router;
     }
 
+    /**
+     * Shows the user the options to log in, register or close the app.
+     */
     @Override
     public void render() {
 
@@ -42,11 +55,11 @@ public class WelcomeScreen extends Screen {
                     app().setAppRunning(false);
                     break;
                 default:
-                    System.out.println("Invalid selection!");
+                    System.out.println("Invalid selection! Please try again!");
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong! Please try again!");
         }
 
     }

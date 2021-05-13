@@ -1,5 +1,9 @@
 package com.revature.p0.screens;
 
+/**
+ * Super class extended by all of the screens, gives them names to be called by as well as giving them the
+ * ability to call other screens and garuntees they will have render()
+ */
 public abstract class Screen {
 
     protected String name;

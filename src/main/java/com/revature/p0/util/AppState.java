@@ -6,12 +6,19 @@ import com.revature.p0.screens.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * Instantiates all the necessary screens as well as the BufferedReader, and router. Also has a bool 'AppRunning' that
+ * when set to false will end the program
+ */
 public class AppState {
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
     private boolean appRunning;
 
+    /**
+     * Initializes router, all screens and the routes to reach them
+     */
     public AppState() {
         System.out.println("Initializing application...");
 
@@ -31,17 +38,27 @@ public class AppState {
                  .addScreen(new TransactionsScreen(consoleReader, router));
 
 
-        System.out.println("Application initialized!");
+        System.out.println("Starting up...");
     }
 
+    /**
+     * @return returns the present router
+     */
     public ScreenRouter getRouter() {
         return router;
     }
 
+    /**
+     * @return appRunning
+     */
     public boolean isAppRunning() {
         return appRunning;
     }
 
+    /**
+     * When false is fed in the program will terminate
+     * @param appRunning
+     */
     public void setAppRunning(boolean appRunning) {
         this.appRunning = appRunning;
     }
